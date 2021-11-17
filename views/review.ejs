@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/review.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="Container-fluid">
+        <div class="topnav" class="row">
+            <a href="/">Home</a>
+            <a href="/participants">Participants</a>
+            <!-- <a class="active " href="/review">Review</a> -->
+        </div>
+        <div style="padding-left:16px; text-align: center;" class="row">
+            <p id="heading2">Review Task</p>
+
+            <section id="video" class="col-sm-6">
+                <video width="80%" height="300px" controls>
+            <source src="/recordings/upload1.webm" type="video/webm">
+            Your browser does not support HTML video.
+            </video>
+            </section>
+            <aside id="notes" class="col-sm-6">
+                <div id="details">
+                    <h2 style="font-weight:bold">Participant Details</h2>
+                    <h3>Name: <span style="font-weight:bold">Lorem ipsum</span> </h3>
+                    <h3>Task: <span style="font-weight:bold">Lorem ipsum dolor sit amet</span></h3>
+                </div>
+                <h3>Make Notes</h3>
+                <textarea style="width: 80%; height:40%">
+            </textarea>
+                <div></div> <button class="button" id="submit-notes">Submit</button></div>
+        </aside>
+    </div>
+    </div>
+</body>
+
+</html>

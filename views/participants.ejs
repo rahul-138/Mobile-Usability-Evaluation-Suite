@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/participants.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="Container-fluid">
+        <div class="topnav" class="row">
+            <a href="/">Home</a>
+            <a class="active" href="/participants">Participants</a>
+            <!-- <a href="/review">Review</a> -->
+        </div>
+        <div style="padding-left:16px; text-align: center;" class="row">
+            <p id="heading2">Participant List</p>
+        </div>
+        <div class="container">
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Task</th>
+                        <th>Action</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Anna</td>
+                        <td>Task1</td>
+                        <td>
+                            <button class="button" type="button" onclick="location.href='/record'">Record</button>
+                            <button class="button" type="button" onclick="location.href='/review'">Review</button>
+                        </td>
+                        <td>
+                            <button class="button" type="button" onclick="location.href='/'">Summary</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Debbie</td>
+                        <td>Task2</td>
+                        <td>
+                            <button class=" button " type="button" onclick=" location.href='/record' ">Record</button>
+                            <button class="button " type="button" onclick="location.href='/review'">Review</button>
+                        </td>
+                        <td>
+                            <button class="button" type="button" onclick="location.href='/'">Summary</button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
