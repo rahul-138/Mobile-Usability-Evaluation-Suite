@@ -20,7 +20,7 @@
 
 
     <!-- Main div code -->
-    <form action="#">
+    <form action="/addParticipant" method="POST">
         <div class="container">
             <h1 style="text-align: center;">Register</h1>
             <p style="text-align: center;">Please fill in this form to create an account.</p>
@@ -30,20 +30,20 @@
             <input type="text" placeholder="Enter Name" name="name" id="name" required>
 
             <label for="gender"><b>Gender</b></label>
-            <select id="gender">
-			<option>Select Gender</option>
-			<option value="male">Male</option>
-			<option value="female">Female</option>
-			<option value="transgender">Transgender</option>
-		</select>
+            <select id="gender" name="gender">
+                <option>Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="transgender">Transgender</option>
+            </select>
 
             <label for="time"><b>Time Slot</b></label>
-            <select id="time">
-			<option>Select Time slot</option>
-			<option value="time">10 to 12am</option>
-			<option value="time">1 to 3 pm</option>
-			<option value="time">4 to 6 pm</option>
-		</select>
+            <select id="time" name="time">
+                <option>Select Time slot</option>
+                <option value="10 to 12am">10 to 12am</option>
+                <option value="1 to 3 pm">1 to 3 pm</option>
+                <option value="4 to 6 pm">4 to 6 pm</option>
+            </select>
 
 
 
@@ -57,22 +57,22 @@
             <input type="phone" placeholder="Enter mobile no." name="phone" id="phone" required>
 
             <label for="addTask"><b>Tasks to perform</b></label><br>
-            <input type="addTask" placeholder="Add Task" name="addTask" id="addTask" required>
+            <input type="addTask" placeholder="Add Task" name="addTask" id="addTask">
             <span onclick="newElement()" class="addBtn">Add</span>
-            <ul id="myUL"></ul>
+            <ul id="myUL" name="myUL"></ul>
+            <input type="hidden" value="" id="hidden_task" name="hidden" />
+
 
             <!--<hr>
 		<p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>-->
 
-            <button type="submit" class="registerbtn" onclick="location.href='/participants'">Register</button>
+            <button type="submit" class="registerbtn">Register</button>
         </div>
 
-        <!--<div class="container signin">
-		<p>Already have an account? <a href="#">Sign in</a>.</p>
-		</div>-->
+        
     </form>
 
-    <!-- Main div ending here... -->
+   
 </body>
 
 </html>

@@ -47,11 +47,12 @@ player.on('finishRecord', function() {
     data['name'] = "Noone.webm";
     console.log(data['name']);
     let fd = new FormData()
-
+    let obj_id=stop_button.value;
+    let id=start_button.value;
     fd.append('data', data)
     $.ajax({
         type: 'POST',
-        url: '/uploadvideo',
+        url: '/uploadvideo/'+document.getElementById('participant_name').textContent+'/'+id,
         data: fd,
         processData: false,
         contentType: false

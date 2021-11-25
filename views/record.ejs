@@ -44,11 +44,11 @@
             <aside id="notes" class="col-sm-6">
                 <div id="details">
                     <h2 style="font-weight:bold">Participant Details</h2>
-                    <h3>Name: <span style="font-weight:bold">Lorem ipsum</span> </h3>
-                    <h3>Task: <span style="font-weight:bold">Lorem ipsum dolor sit amet</span></h3>
+                    <h3>Name: <span id="participant_name" style="font-weight:bold"><%= participant_name %></span> </h3>
+                    <h3>Task: <span style="font-weight:bold"><%= task_name %></span></h3>
                 </div>
-                <button class="button" id="start-record">Start Recording</button>
-                <button class="button" id="stop-record">Stop Recording</button>
+                <button class="button" id="start-record" value="<%= task_id %> ">Start Recording</button>
+                <button class="button" id="stop-record" value="<%= obj_id %> ">Stop Recording</button>
 
             </aside>
         </div>

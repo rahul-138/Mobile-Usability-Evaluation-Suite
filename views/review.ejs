@@ -22,22 +22,29 @@
 
             <section id="video" class="col-sm-6">
                 <video width="80%" height="300px" controls>
-            <source src="/recordings/upload1.webm" type="video/webm">
-            Your browser does not support HTML video.
-            </video>
+                    <source src="/recordings/<%= participant_name%>_<%=task_id%>.webm" type="video/webm">
+                    Your browser does not support HTML video.
+                </video>
             </section>
             <aside id="notes" class="col-sm-6">
                 <div id="details">
                     <h2 style="font-weight:bold">Participant Details</h2>
-                    <h3>Name: <span style="font-weight:bold">Lorem ipsum</span> </h3>
-                    <h3>Task: <span style="font-weight:bold">Lorem ipsum dolor sit amet</span></h3>
+                    <h3>Name: <span style="font-weight:bold">
+                            <%= participant_name %>
+                        </span> </h3>
+                    <h3>Task: <span style="font-weight:bold">
+                            <%= task_name %>
+                        </span></h3>
                 </div>
                 <h3>Make Notes</h3>
-                <textarea style="width: 80%; height:40%">
-            </textarea>
-                <div></div> <button class="button" id="submit-notes">Submit</button></div>
-        </aside>
-    </div>
+                <form action="/addNotes/<%= obj_id %>/<%=task_id%>" method="POST">
+                    <textarea style="width: 80%; height:40%" name="notes"></textarea>
+                    <div>
+                        <button class="button" id="submit-notes">Submit</button>
+                    </div>
+                </form>
+            </aside>
+        </div>
     </div>
 </body>
 
