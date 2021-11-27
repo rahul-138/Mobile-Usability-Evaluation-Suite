@@ -11,11 +11,18 @@
     <link rel="stylesheet" href="/css/colors.css" />
     <link rel="stylesheet" href="bootstrap.min.js">
     <script src="/script/main.js"></script>
+    <title>Mobile Usability Evaluation Testing</title>
 </head>
 
 <body>
 
-
+    <nav>
+        <div class="topnav" class="row">
+            <a class="active" href="/">Home</a>
+            <a href="/participants">Participants</a>
+            <!-- <a href="/review">Review</a> -->
+        </div>
+    </nav>
 
 
 
@@ -23,7 +30,7 @@
     <form action="/addParticipant" method="POST">
         <div class="container">
             <h1 style="text-align: center;">Register</h1>
-            <p style="text-align: center;">Please fill in this form to create an account.</p>
+            <p style="text-align: center;">Please fill in this form to participate in testing.</p>
             <hr>
 
             <label for="name"><b>Name</b></label>
@@ -31,7 +38,7 @@
 
             <label for="gender"><b>Gender</b></label>
             <select id="gender" name="gender">
-                <option>Select Gender</option>
+                <option hidden >Select Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="transgender">Transgender</option>
@@ -39,7 +46,7 @@
 
             <label for="time"><b>Time Slot</b></label>
             <select id="time" name="time">
-                <option>Select Time slot</option>
+                <option hidden>Select Time slot</option>
                 <option value="10 to 12am">10 to 12am</option>
                 <option value="1 to 3 pm">1 to 3 pm</option>
                 <option value="4 to 6 pm">4 to 6 pm</option>
@@ -51,7 +58,7 @@
             <input type="text" placeholder="Enter Email" name="email" id="email" required>
 
             <label for="date"><b>Date</b></label>
-            <input type="date" placeholder="Enter date" name="date" id="date" required>
+            <input type="date" placeholder="Enter date" name="date" id="date" min="2021-11-28" required>
 
             <label for="phone"><b>Mobile Number</b></label>
             <input type="phone" placeholder="Enter mobile no." name="phone" id="phone" required>
@@ -69,10 +76,10 @@
             <button type="submit" class="registerbtn">Register</button>
         </div>
 
-        
+
     </form>
 
-   
+
 </body>
 
 </html>

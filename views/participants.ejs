@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Mobile Usability Evaluation Testing</title>
 </head>
 
 <body>
@@ -36,22 +37,30 @@
                     <% participant_list.forEach(function(participant,i){ %>
                         <% participant.Tasks.forEach(function(task,j){ task=task.split(',')[0] %>
                             <tr>
-                            <% if(j==0) {%>
-                                <td rowspan="<%=  participant.Tasks.length %>"><%= i+1 %></td>
-                                <td rowspan="<%= participant.Tasks.length %>"><%= participant.Name %> </td>
-                            <% } %>
-                            <td><%=task %></td>
-                            <td>
-                                <button class="button" type="button" onclick="location.href='/record/<%= participant.Name %>/<%=obj_array[i] %>/<%=task %>/<%= j %>'">Record</button>
-                                <button class="button" type="button" onclick="location.href='/review/<%= participant.Name %>/<%=obj_array[i] %>/<%=task %>/<%= j %>'">Review</button>
-                            </td>
-                            <td>
-                                <button class="button" type="button" onclick="location.href='/'">Summary</button>
-                            </td>
-                        </tr>
+                                <% if(j==0) {%>
+                                    <td rowspan="<%=  participant.Tasks.length %>">
+                                        <%= i+1 %>
+                                    </td>
+                                    <td rowspan="<%= participant.Tasks.length %>">
+                                        <%= participant.Name %>
+                                    </td>
+                                    <% } %>
+                                        <td>
+                                            <%=task %>
+                                        </td>
+                                        <td>
+                                            <button class="button" type="button" onclick="location.href='/record/<%= participant.Name %>/<%=obj_array[i] %>/<%=task %>/<%= j %>'">Record</button>
+                                            <button class="button" type="button" onclick="location.href='/review/<%= participant.Name %>/<%=obj_array[i] %>/<%=task %>/<%= j %>'">Review</button>
+                                        </td>
+                                        <% if(j==0) {%>
+                                            <td rowspan="<%= participant.Tasks.length %>">
+                                                <button class="button" type="button" onclick="location.href='/'">Summary</button>
+                                            </td>
+                                            <% }%>
+                            </tr>
                             <% }); %>
-                        <% }); %>
-                        
+                                <% }); %>
+
 
                 </tbody>
             </table>

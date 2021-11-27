@@ -53,3 +53,8 @@ body {
 tr {
     padding: 50%
 }
+
+th,
+td {
+    font-size: 20px;
+}
