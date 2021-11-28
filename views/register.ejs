@@ -10,75 +10,76 @@
     <link rel="stylesheet" href="/css/responsive.css" />
     <link rel="stylesheet" href="/css/colors.css" />
     <link rel="stylesheet" href="bootstrap.min.js">
+    <script src="/script/main.js"></script>
+    <title>Mobile Usability Evaluation Testing</title>
 </head>
 
 <body>
 
-
+    <nav>
+        <div class="topnav" class="row">
+            <a class="active" href="/">Home</a>
+            <a href="/participants">Participants</a>
+            <!-- <a href="/review">Review</a> -->
+        </div>
+    </nav>
 
 
 
     <!-- Main div code -->
-    <div class="Container-fluid">
-        <div class="topnav" class="row">
-            <a href="/">Home</a>
-            <a class="active" href="/participants">Participants</a>
-        </div>
+    <form action="/addParticipant" method="POST">
+        <div class="container">
+            <h1 style="text-align: center;">Register</h1>
+            <p style="text-align: center;">Please fill in this form to participate in testing.</p>
+            <hr>
 
-        <form action="#">
-            <div class="container">
-                <h1 style="text-align: center;">Register</h1>
+            <label for="name"><b>Name</b></label>
+            <input type="text" placeholder="Enter Name" name="name" id="name" required>
 
-                <hr>
+            <label for="gender"><b>Gender</b></label>
+            <select id="gender" name="gender">
+                <option hidden >Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="transgender">Transgender</option>
+            </select>
 
-                <label for="name"><b>Name</b></label>
-                <input type="text" placeholder="Enter Name" name="name" id="name" required>
-
-                <label for="gender"><b>Gender</b></label>
-                <select id="gender">
-            <option value="" disabled selected hidden >Select Gender</option>
-			<option value="male">Male</option>
-			<option value="female">Female</option>
-			<option value="transgender">Transgender</option>
-		</select>
-
-                <label for="time"><b>Time Slot</b></label>
-                <select id="time">
-            <option value="" disabled selected hidden>Select Time slot</option>
-			<option value="time">10 to 12am</option>
-			<option value="time">1 to 3 pm</option>
-			<option value="time">4 to 6 pm</option>
-		</select>
+            <label for="time"><b>Time Slot</b></label>
+            <select id="time" name="time">
+                <option hidden>Select Time slot</option>
+                <option value="10 to 12am">10 to 12am</option>
+                <option value="1 to 3 pm">1 to 3 pm</option>
+                <option value="4 to 6 pm">4 to 6 pm</option>
+            </select>
 
 
 
-                <label for="email"><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" id="email" required>
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" id="email" required>
 
-                <label for="date"><b>Date</b></label>
-                <input type="date" placeholder="Enter date" name="date" onclick="isValidDate()" id="date" required>
+            <label for="date"><b>Date</b></label>
+            <input type="date" placeholder="Enter date" name="date" id="date" min="2021-11-28" required>
 
-                <label for="phone"><b>Mobile Number</b></label>
-                <input type="phone" placeholder="Enter mobile no." name="phone" id="phone" required>
+            <label for="phone"><b>Mobile Number</b></label>
+            <input type="phone" placeholder="Enter mobile no." name="phone" id="phone" required>
 
-                <label for="addTask"><b>Tasks to perform</b></label><br>
-                <input type="addTask" placeholder="Add Task" name="addTask" id="addTask" required>
-                <span onclick="newElement()" class="addBtn">Add</span>
-                <ul id="myUL"></ul>
+            <label for="addTask"><b>Tasks to perform</b></label><br>
+            <input type="addTask" placeholder="Add Task" name="addTask" id="addTask">
+            <span onclick="newElement()" class="addBtn">Add</span>
+            <ul id="myUL" name="myUL"></ul>
+            <input type="hidden" value="" id="hidden_task" name="hidden" />
 
-                <!--<hr>
+
+            <!--<hr>
 		<p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>-->
 
-                <button type="submit" class="registerbtn" onclick="location.href='/participants'">Register</button>
-            </div>
+            <button type="submit" class="registerbtn">Register</button>
+        </div>
 
-            <!--<div class="container signin">
-		<p>Already have an account? <a href="#">Sign in</a>.</p>
-		</div>-->
-        </form>
-    </div>
-    <!-- Main div ending here... -->
-    <script src="/script/main.js"></script>
+
+    </form>
+
+
 </body>
 
 </html>

@@ -3,6 +3,7 @@ const PORT = 8080;
 const express = require('express');
 const ejs = require('ejs');
 
+const PDFDocument = require('pdfkit');
 const multipart = require('connect-multiparty')
 const multipartMiddleware = multipart()
 const os = require('os')
@@ -77,6 +78,68 @@ app.get("/record/:participant_name/:obj_id/:task/:task_id", function (req, res) 
         obj_id: obj_id
     });
 });
+
+app.get("/generatepdf/:obj_id/:index", function(req,res){
+    var id = mongoose.Types.ObjectId(req.params.obj_id);
+    
+    Participant.findOne({_id:id},function(err,results){
+        if(!err)
+        {
+            const doc = new PDFDocument();
+            
+            let taskname;
+            let tasknotes;
+            let index=req.params.index;
+            let participant_name=results.Name;
+            let pname="Participant name: "+ participant_name 
+            let filename="./review_notes/"+participant_name+index+"_Notes.pdf"
+            let datetime=results.Date+" ("+results.Time+")";
+    
+            doc.pipe(fs.createWriteStream(filename));
+            doc.fontSize(25).font('Helvetica-Bold').text('Mobile Usability Evaluation Review Notes\n',{align: 'center'})
+            
+            doc.moveTo(doc.x,doc.y).lineTo(doc.page.width-80,doc.y).stroke();
+            doc.moveDown();
+            doc.fontSize(18).fillColor('black').text("Participant name: ",{lineGap:5,continued: true}).fillColor('blue').text(participant_name);
+            doc.fontSize(18).fillColor('black').text("Email id: ",{lineGap:5,continued: true}).fillColor('blue').text(results.Email);
+            doc.fontSize(18).fillColor('black').text("Phone number: ",{lineGap:5,continued: true}).fillColor('blue').text(results.Phone);
+            doc.fontSize(18).fillColor('black').text("Date and time of evaluation: ",{continued: true}).fillColor('blue').text(datetime);
+            doc.moveTo(doc.x,doc.y).lineTo(doc.page.width-80,doc.y).stroke();
+            doc.moveDown();
+            arr = results.Tasks;
+            arr.forEach(function(task,i){
+
+                tasks=task.split(',');
+                taskname= task.split(',')[0]
+                tasknotes= task.split(',')[1]
+
+                if(tasknotes==null){
+                    tasknotes="No notes available for this task";
+                }
+                else{
+                    for (let i = 2; i < tasks.length; i++) {
+                        tasknotes+=tasks[i]+'\n';
+                    }
+                }
+                
+                doc.fontSize(18).fillColor('black').font('Helvetica-Bold').text("Task Name: ",{lineGap:6,continued: true}).fillColor('blue').text(taskname);
+                
+                doc.fontSize(14).fillColor('black').font('Helvetica').text(tasknotes);
+                
+                doc.moveTo(doc.x,doc.y).lineTo(doc.page.width-80,doc.y).stroke();
+                doc.moveDown();
+            });
+            
+            //console.log(results);
+            doc.end();
+            //console.log("PDF created");
+            res.redirect("/participants");
+        }
+        
+    });
+});
+
+
 app.get("/participants", function (req, res) {
     Participant.find({}, function (err, results) {
         if (!err) {
