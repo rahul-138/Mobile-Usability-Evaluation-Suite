@@ -124,7 +124,8 @@ textarea {
 
 input[type=text],
 input[type=date],
-input[type=phone] {
+input[type=phone],
+input[type=email] {
     width: 100%;
     padding: 10px;
     margin: 5px 0 22px 0;
