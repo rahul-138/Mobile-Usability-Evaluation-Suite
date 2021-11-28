@@ -117,25 +117,29 @@ app.get("/generatepdf/:obj_id/:index", function(req,res){
                 tasks=task.split(',');
                 taskname= task.split(',')[0]
                 tasknotes= task.split(',')[1]
+                doc.fontSize(18).fillColor('black').font('Helvetica-Bold').text("Task Name: ",{lineGap:6,continued: true}).fillColor('blue').text(taskname);
 
                 if(tasknotes==null){
-                    tasknotes="No notes available for this task";
+                    //tasknotes="No notes available for this task";
+                    doc.fontSize(14).fillColor('black').font('Helvetica').text("No notes available for this task");
                 }
                 else{
-                    for (let i = 2; i < tasks.length; i++) {
-                        tasknotes+=tasks[i]+'\n';
+
+                    for (let i = 1; i < tasks.length; i++) {
+                        //tasknotes += String(tasks[i]) + "nn";
+                        doc.fontSize(14).fillColor('black').font('Helvetica').text(tasks[i]);        
                     }
                 }
+                console.log(tasknotes);
+                //doc.fontSize(18).fillColor('black').font('Helvetica-Bold').text("Task Name: ",{lineGap:6,continued: true}).fillColor('blue').text(taskname);
                 
-                doc.fontSize(18).fillColor('black').font('Helvetica-Bold').text("Task Name: ",{lineGap:6,continued: true}).fillColor('blue').text(taskname);
-                
-                doc.fontSize(14).fillColor('black').font('Helvetica').text(tasknotes);
+               // doc.fontSize(14).fillColor('black').font('Helvetica').text(tasknotes);
                 
                 doc.moveTo(doc.x,doc.y).lineTo(doc.page.width-80,doc.y).stroke();
                 doc.moveDown();
             });
             
-            //console.log(results);
+            console.log(results);
             doc.end();
             //console.log("PDF created");
             alert("PDF created as "+pdfName);
