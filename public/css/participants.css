@@ -16,11 +16,13 @@ body {
     padding: 14px 45px;
     text-decoration: none;
     font-size: 17px;
+    transition: 0.5s ease-in-out all;
 }
 
 .topnav a:hover {
     background-color: #ddd;
     color: black;
+    text-decoration: none;
 }
 
 .topnav a.active {
@@ -29,6 +31,7 @@ body {
 }
 
 #heading2 {
+    margin: 1rem auto;
     font-family: 'Enriqueta', arial, serif;
     line-height: 1.2;
     font-size: 45px;
@@ -49,12 +52,17 @@ body {
     margin: 0 2px;
     cursor: pointer;
 }
-
+button:hover{
+    background-color: #2f7a32;
+}
 tr {
-    padding: 50%
+    text-align: center;
+    vertical-align: middle;
+    padding: 50%;
 }
 
 th,
-td {
+.table td {
     font-size: 20px;
+    vertical-align: middle;
 }

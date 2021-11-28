@@ -3,11 +3,13 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/css/review.css">
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Mobile Usability Evaluation Testing</title>
+    <link rel="icon" href="/assets/favicon.png">
+    <link rel="stylesheet" href="/css/review.css">
 </head>
 
 <body>
@@ -23,7 +25,7 @@
 
             <section id="video" class="col-sm-6">
                 <video width="80%" height="300px" controls>
-                    <source src="/recordings/<%= participant_name%>_<%=task_id%>.webm" type="video/webm">
+                    <source src="/recordings/<%= ind%>P_<%=task_id%>.webm" type="video/webm">
                     Your browser does not support HTML video.
                 </video>
             </section>

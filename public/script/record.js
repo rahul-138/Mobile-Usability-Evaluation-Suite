@@ -47,16 +47,18 @@ player.on('finishRecord', function() {
     data['name'] = "Noone.webm";
     console.log(data['name']);
     let fd = new FormData()
-    let obj_id=stop_button.value;
+    let ind=stop_button.value.trim()+"P";
+    //console.log(ind);
     let id=start_button.value;
     fd.append('data', data)
+    //document.getElementById('participant_name').textContent
     $.ajax({
         type: 'POST',
-        url: '/uploadvideo/'+document.getElementById('participant_name').textContent+'/'+id,
+        url: '/uploadvideo/'+ind+'/'+id,
         data: fd,
         processData: false,
         contentType: false
     }).done(function(data) {
-        console.log(data)
+        window.location.href="../views/participants.ejs";
     })
 });

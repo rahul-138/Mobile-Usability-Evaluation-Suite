@@ -2,16 +2,16 @@
 <html>
 
 <head>
-    <title>Welcome To Registration Form</title>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="fevicon.png" type="image/png" />
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/responsive.css" />
     <link rel="stylesheet" href="/css/colors.css" />
-    <link rel="stylesheet" href="bootstrap.min.js">
-    <script src="/script/main.js"></script>
+    
+    
     <title>Mobile Usability Evaluation Testing</title>
+    <link rel="icon" href="/assets/favicon.png">
 </head>
 
 <body>
@@ -55,13 +55,13 @@
 
 
             <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="Enter Email" name="email" id="email" required>
+            <input type="email" placeholder="Enter Email" name="email" id="email" required>
 
             <label for="date"><b>Date</b></label>
-            <input type="date" placeholder="Enter date" name="date" id="date" min="2021-11-28" required>
+            <input type="date" placeholder="Enter date" name="date" id="date" required>
 
             <label for="phone"><b>Mobile Number</b></label>
-            <input type="phone" placeholder="Enter mobile no." name="phone" id="phone" required>
+            <input type="phone" pattern="[0-9]{10}" placeholder="Enter mobile no." name="phone" id="phone" required>
 
             <label for="addTask"><b>Tasks to perform</b></label><br>
             <input type="addTask" placeholder="Add Task" name="addTask" id="addTask">
@@ -69,17 +69,13 @@
             <ul id="myUL" name="myUL"></ul>
             <input type="hidden" value="" id="hidden_task" name="hidden" />
 
-
-            <!--<hr>
-		<p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>-->
-
             <button type="submit" class="registerbtn">Register</button>
         </div>
 
 
     </form>
 
-
+    <script src="/script/main.js"></script>
 </body>
 
 </html>

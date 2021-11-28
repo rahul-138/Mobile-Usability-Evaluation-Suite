@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const PORT = 8080;
 const express = require('express');
 const ejs = require('ejs');
+let alert = require('alert'); 
 
 const PDFDocument = require('pdfkit');
 const multipart = require('connect-multiparty')
@@ -38,8 +39,8 @@ app.post('/addParticipant', function (req, res) {
     let task_arr = [];
     if (req.body.hidden)
         task_arr = JSON.parse(req.body.hidden)
-    console.log(task_arr)
-
+    //console.log(task_arr)
+   
     const silence = new Participant({
         Name: req.body.name, Gender: req.body.gender, Email: req.body.email, Date: req.body.date, Time: req.body.time, Phone: req.body.phone,
         Tasks: task_arr
@@ -51,31 +52,35 @@ app.post('/addParticipant', function (req, res) {
 app.get("/", function (req, res) {
     res.render("index.ejs");
 });
-app.get("/review/:participant_name/:obj_id/:task/:task_id", function (req, res) {
+app.get("/review/:participant_name/:obj_id/:task/:task_id/:ind", function (req, res) {
     let participant_name = req.params.participant_name
     let task_name = req.params.task
     let task_id = req.params.task_id
     let obj_id = req.params.obj_id
+    let ind = req.params.ind
     res.render("review.ejs", {
         participant_name: participant_name,
         task_name: task_name,
         task_id: task_id,
-        obj_id: obj_id
+        obj_id: obj_id,
+        ind:ind
     });
 });
 app.get("/register", function (req, res) {
     res.render("register.ejs");
 });
-app.get("/record/:participant_name/:obj_id/:task/:task_id", function (req, res) {
+app.get("/record/:participant_name/:obj_id/:task/:task_id/:ind", function (req, res) {
     let participant_name = req.params.participant_name
     let task_name = req.params.task
     let task_id = req.params.task_id
     let obj_id = req.params.obj_id
+    let ind = req.params.ind
     res.render("record.ejs", {
         participant_name: participant_name,
         task_name: task_name,
         task_id: task_id,
-        obj_id: obj_id
+        obj_id: obj_id,
+        ind:ind
     });
 });
 
@@ -91,7 +96,7 @@ app.get("/generatepdf/:obj_id/:index", function(req,res){
             let tasknotes;
             let index=req.params.index;
             let participant_name=results.Name;
-            let pname="Participant name: "+ participant_name 
+            let pdfName=participant_name+index+"_Notes.pdf";
             let filename="./review_notes/"+participant_name+index+"_Notes.pdf"
             let datetime=results.Date+" ("+results.Time+")";
     
@@ -133,6 +138,7 @@ app.get("/generatepdf/:obj_id/:index", function(req,res){
             //console.log(results);
             doc.end();
             //console.log("PDF created");
+            alert("PDF created as "+pdfName);
             res.redirect("/participants");
         }
         
@@ -148,7 +154,7 @@ app.get("/participants", function (req, res) {
                 
                 obj_array[i]=doc._id.toString();
             });
-            console.log(obj_array);
+            //console.log(obj_array);
             res.render("participants.ejs", {
                 obj_array:obj_array,
                 participant_list: results
@@ -160,10 +166,7 @@ app.get("/participants", function (req, res) {
     });
 
 });
-app.post("/", function (req, res) {
-    const n1 = req.body.n1;
-    console.log(n1);
-});
+
 
 app.post('/uploadvideo/:obj_id/:id', multipartMiddleware, function (req, res) {
     
@@ -172,7 +175,9 @@ app.post('/uploadvideo/:obj_id/:id', multipartMiddleware, function (req, res) {
     let location = path.join(__dirname + '/public/recordings', fileName)
     fs.rename(req.files.data.path, location, function (err) {
         if (err) console.log('ERROR: ' + err);
+       
     });
+    res.redirect("/participants");
 });
 
 app.post('/addNotes/:obj_id/:id',function(req,res){
@@ -185,7 +190,7 @@ app.post('/addNotes/:obj_id/:id',function(req,res){
         {
             arr=results.Tasks;
             arr[index]=arr[index]+","+note;
-            console.log(arr);
+            //console.log(arr);
             let filter={_id:obj_id}
             let updateTask={Tasks:arr}
             

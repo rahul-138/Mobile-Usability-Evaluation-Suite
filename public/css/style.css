@@ -37,11 +37,45 @@
     -o-transition: ease all 0.5s;
 }
 
+body {
+    margin: 0;
+    min-width: 250px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url('../assets/slide1.png');
+}
+::placeholder{
+    color: black;
+}
 .container {
     padding: 16px;
     background-color: white;
     width: 10px;
+    margin-top: 20px;
 }
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+}
+
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 45px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
 
 div.container {
     width: 50%;
@@ -63,11 +97,6 @@ div.container {
 
 .addBtn:hover {
     background-color: #bbb;
-}
-
-body {
-    margin: 0;
-    min-width: 250px;
 }
 
 @media only screen and (max-width: 800px) {
@@ -105,7 +134,7 @@ input[type=phone] {
 }
 
 #gender,
-#time {
+#time{
     width: 100%;
     padding: 10px;
     margin: 5px 0 22px 0;
@@ -113,6 +142,7 @@ input[type=phone] {
     border: none;
     background: #f1f1f1;
 }
+
 
 ul {
     margin: 0;
@@ -152,18 +182,6 @@ ul li:hover {
 }
 
 
-/*.header {
-    background-color: #f44336;
-    padding: 30px 40px;
-    color: white;
-    text-align: center;
-  }
-  
-  .header:after {
-    content: "";
-    display: table;
-    clear: both;
-  }*/
 
 .select-items div,
 .select-selected {
@@ -205,7 +223,7 @@ a {
 }
 
 input[type=text]:focus,
-input[type=password]:focus {
+input[type=password]:focus,input[type=date]:focus,input[type=phone]:focus,input[type=addTask]:focus {
     background-color: #ddd;
     outline: none;
 }
@@ -221,11 +239,6 @@ body {
     background-image: url('../assets/slide1.png');
 }
 
-body {
-    overflow: hidden !important;
-    margin: 0;
-    min-width: 250px;
-}
 
 a {
     color: #1f1f1f;
@@ -2171,29 +2184,4 @@ ul.pagination li.page-item.active .page-link {
 .scren {
     float: left;
     width: 25%;
-}
-
-.topnav {
-    overflow: hidden;
-    background-color: #333;
-    margin-bottom: 1%;
-}
-
-.topnav a {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 45px;
-    text-decoration: none;
-    font-size: 17px;
-}
-
-.topnav a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
-.topnav a.active {
-    background-color: #04AA6D;
-    color: white;
 }
